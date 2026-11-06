@@ -1,33 +1,36 @@
-﻿# Verificador de Força de Senhas
+# 🔑 Verificador de Força e Vazamento de Senhas
 
-Script em Python que avalia a força de uma senha de duas formas:
+Um script em Python projetado para avaliar a segurança de senhas de duas formas complementares: **cálculo de entropia matemática** e **checagem contra vazamentos de dados públicos**.
 
-1. **Entropia estimada**: calcula os bits de entropia com base no tamanho e nos tipos de caracteres usados.
-2. **Checagem de vazamentos**: consulta a API do Have I Been Pwned para saber se a senha já apareceu em vazamentos de dados.
+---
 
-## Como funciona o k-anonimato
+## 🚀 Funcionalidades
 
-A senha **nunca sai do seu computador**. O script:
+- **📐 Entropia Estimada:** Calcula a quantidade de bits de entropia com base no tamanho da senha e na diversidade dos tipos de caracteres utilizados (letras minúsculas, maiúsculas, números e símbolos).
+- **🏷️ Classificação da Senha:** Categoriza automaticamente a força da senha como *Fraca*, *Razoável*, *Forte* ou *Muito Forte*.
+- **🔍 Checagem de Vazamentos:** Integração com a API do *Have I Been Pwned* para verificar se a senha já foi exposta em incidentes de segurança.
+- **🙈 Entrada Segura:** Utiliza o módulo `getpass` para que a senha digitada não seja exibida na tela do terminal.
 
-1. Gera o hash SHA-1 da senha localmente.
-2. Envia à API apenas os **5 primeiros caracteres** do hash.
-3. Recebe uma lista de hashes que começam com esse prefixo.
-4. Compara o restante do hash localmente.
+---
 
-Assim, a API não consegue descobrir qual senha foi verificada.
+## 🛡️ Como Funciona o k-Anonimato (k-Anonymity)
 
-## Instalação
+A sua senha **nunca sai do seu computador**. Para preservar a privacidade e a segurança total do usuário, o script opera da seguinte maneira:
 
+1. Gera o hash **SHA-1** da senha digitada localmente.
+2. Envia à API do *Have I Been Pwned* **apenas os 5 primeiros caracteres** desse hash (o prefixo).
+3. A API responde com uma lista de todos os sufixos de hashes conhecidos que começam com esse mesmo prefixo.
+4. O script compara o restante do hash (o sufixo) **localmente na sua máquina**.
 
-## Uso
+> 💡 **Resultado:** A API nunca descobre qual foi a senha verificada, mantendo o anonimato e o sigilo completo das suas credenciais.
 
-A senha digitada não aparece na tela (uso do `getpass`).
+---
 
-## Limitações
+## 📦 Instalação
 
-- A entropia é apenas uma estimativa e não detecta padrões como `qwerty` ou `abc123`.
-- Requer conexão com a internet para a checagem de vazamentos.
+### Pré-requisitos
+- Python 3.x instalado.
 
-## Aviso
+## Aviso ❗
 
 Nunca digite senhas reais em ferramentas em que você não confia. Leia o código antes de usar.
