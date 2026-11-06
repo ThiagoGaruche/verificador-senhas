@@ -31,6 +31,8 @@ A sua senha **nunca sai do seu computador**. Para preservar a privacidade e a se
 ### Pré-requisitos
 - Python 3.x instalado.
 
+---
+
 ## Aviso ❗
 
 Nunca digite senhas reais em ferramentas em que você não confia. Leia o código antes de usar.
